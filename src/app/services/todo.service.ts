@@ -43,4 +43,8 @@ export class TodoService {
 
     this.taskList.push(newTask);
   }
+
+  deleteTask(index: number) {
+    this.taskList.splice(index, 1);
+  }
 }
