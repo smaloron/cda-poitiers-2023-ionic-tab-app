@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>todo-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nom de la tâche</ion-label>
+        <ion-input type="text" ngModel name="taskName" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Date d'échéance</ion-label>
+        <ion-input type="date" ngModel name="dueDate" required></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button type="submit">Valider</ion-button>
+  </form>
+
+</ion-content>
