@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TodoInterface, TodoService } from 'src/app/services/todo.service';
 
 
@@ -11,7 +12,7 @@ import { TodoInterface, TodoService } from 'src/app/services/todo.service';
 export class TodoListPage implements OnInit {
 
 
-  constructor(public todoService: TodoService) {
+  constructor(public todoService: TodoService, private router: Router) {
 
   }
 
@@ -23,6 +24,11 @@ export class TodoListPage implements OnInit {
       return 'warning';
 
     return 'success';
+  }
+
+  edit(pos: number) {
+    this.todoService.editedTaskIndex = pos;
+    this.router.navigate(['todo-form']);
   }
 
 }

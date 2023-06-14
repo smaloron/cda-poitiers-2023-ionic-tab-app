@@ -16,6 +16,10 @@
         <ion-button color="danger" (click)="todoService.deleteTask(pos)">
           <ion-icon name="trash" slot="icon-only"></ion-icon>
         </ion-button>
+
+        <ion-button color="primary" (click)="edit(pos)">
+          <ion-icon name="create" slot="icon-only"></ion-icon>
+        </ion-button>
       </ion-buttons>
     </ion-item>
   </ion-list>

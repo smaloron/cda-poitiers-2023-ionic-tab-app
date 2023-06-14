@@ -30,6 +30,8 @@ export class TodoService {
     }
   ];
 
+  editedTaskIndex: number | null = null;
+
   constructor() { }
 
   addTask(data: any) {
@@ -47,4 +49,15 @@ export class TodoService {
   deleteTask(index: number) {
     this.taskList.splice(index, 1);
   }
+
+  getTask() {
+    if (this.editedTaskIndex != null) {
+      return this.taskList[this.editedTaskIndex];
+    } else {
+      return {};
+    }
+  }
+
+
+
 }
