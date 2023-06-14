@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let task of taskList" [color]="getTaskColor(task)">
+    <ion-item *ngFor="let task of todoService.taskList" [color]="getTaskColor(task)">
       <ion-label>
         <h3>{{ task.taskName }}</h3>
         <p>Créée le {{ task.createdAt | date: 'd/MM/yyyy' }}</p>
