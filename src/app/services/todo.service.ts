@@ -31,4 +31,16 @@ export class TodoService {
   ];
 
   constructor() { }
+
+  addTask(data: any) {
+    const newTask: TodoInterface = {
+      done: false,
+      createdAt: new Date(),
+      id: new Date().getTime(),
+      taskName: data.taskName,
+      dueDate: data.dueDate
+    }
+
+    this.taskList.push(newTask);
+  }
 }
