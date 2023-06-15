@@ -9,7 +9,7 @@
   <ion-list>
     <ion-item [color]="settingsSrv.settings.colors.pendingTask">
       <ion-label position="stacked">Couleur des tâches en cours</ion-label>
-      <ion-select [(ngModel)]="settingsSrv.settings.colors.pendingTask">
+      <ion-select [(ngModel)]="settingsSrv.settings.colors.pendingTask" (ionChange)="settingsSrv.persist()">
         <ion-select-option *ngFor="let color of settingsSrv.colorNamesList" [value]="color">
           {{ color }}
         </ion-select-option>
@@ -18,7 +18,7 @@
 
     <ion-item [color]="settingsSrv.settings.colors.doneTask">
       <ion-label position="stacked">Couleur des tâches terminées</ion-label>
-      <ion-select [(ngModel)]="settingsSrv.settings.colors.doneTask">
+      <ion-select [(ngModel)]="settingsSrv.settings.colors.doneTask" (ionChange)="settingsSrv.persist()">
         <ion-select-option *ngFor="let color of settingsSrv.colorNamesList" [value]="color">
           {{ color }}
         </ion-select-option>
