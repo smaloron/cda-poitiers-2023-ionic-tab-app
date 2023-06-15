@@ -46,6 +46,20 @@ export class TodoService {
     this.taskList.push(newTask);
   }
 
+  updateTask(data: any) {
+    const task = this.getTask();
+    if ('taskName' in task && 'dueDate' in task) {
+      task.taskName = data.taskName;
+      task.dueDate = data.dueDate;
+
+      this.editedTaskIndex = null;
+    }
+  }
+
+  isInUpdateMode() {
+    return this.editedTaskIndex !== null;
+  }
+
   deleteTask(index: number) {
     this.taskList.splice(index, 1);
   }

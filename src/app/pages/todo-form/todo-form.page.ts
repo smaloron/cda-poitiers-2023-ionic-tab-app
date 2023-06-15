@@ -36,7 +36,12 @@ export class TodoFormPage implements OnInit {
   onSubmit(todoForm: NgForm) {
     //console.log(todoForm.form.value);
     if (todoForm.status === 'VALID') {
-      this.todoService.addTask(todoForm.form.value);
+      if (this.todoService.isInUpdateMode()) {
+        this.todoService.updateTask(todoForm.form.value);
+      } else {
+        this.todoService.addTask(todoForm.form.value);
+      }
+
       //this.router.navigate(['tabs', 'todo-list']);
       this.router.navigateByUrl('/tabs/todo-list');
     }
