@@ -41,7 +41,7 @@ export class SettingsService {
 
     this.loadSettings();
 
-    //this.setStorageKeyList();
+    this.setStorageKeyList();
   }
 
   async loadSettings() {
@@ -49,8 +49,8 @@ export class SettingsService {
     this.settings = JSON.parse(data) || this.defaultSettings;
   }
 
-  persist() {
-    this.store.set(STORAGE_KEY, JSON.stringify(this.settings));
+  async persist() {
+    await this.store.set(STORAGE_KEY, JSON.stringify(this.settings));
   }
 
   async setStorageKeyList() {

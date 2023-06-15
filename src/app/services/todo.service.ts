@@ -45,11 +45,13 @@ export class TodoService {
     this.taskList = JSON.parse(data) || [];
   }
 
-  persist() {
-    this.store.set(
+  async persist() {
+    await this.store.set(
       this.settingsSrv.settings.storageKey,
       JSON.stringify(this.taskList)
     );
+
+    this.settingsSrv.setStorageKeyList();
   }
 
   addTask(data: any) {
