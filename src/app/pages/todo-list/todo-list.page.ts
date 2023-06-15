@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SettingsService } from 'src/app/services/settings.service';
 import { TodoInterface, TodoService } from 'src/app/services/todo.service';
 
 
@@ -12,7 +13,10 @@ import { TodoInterface, TodoService } from 'src/app/services/todo.service';
 export class TodoListPage implements OnInit {
 
 
-  constructor(public todoService: TodoService, private router: Router) {
+  constructor(
+    public todoService: TodoService,
+    private router: Router,
+    private settingsSrv: SettingsService) {
 
   }
 
@@ -22,9 +26,9 @@ export class TodoListPage implements OnInit {
 
   getTaskColor(task: TodoInterface) {
     if (task.done)
-      return 'warning';
+      return this.settingsSrv.settings.colors.doneTask;
 
-    return 'success';
+    return this.settingsSrv.settings.colors.pendingTask;
   }
 
   edit(pos: number) {
