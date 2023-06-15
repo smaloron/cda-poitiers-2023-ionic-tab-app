@@ -4,10 +4,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">stats</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Nombre total des tâches
+      </ion-label>
+
+      <ion-chip>
+        {{ stats.getTaskCount() }}
+      </ion-chip>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Nombre de tâches en cours
+      </ion-label>
+
+      <ion-chip color="success">
+        {{ stats.getPendingTaskCount() }}
+      </ion-chip>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>
+      Nombre de tâches réalisées
+    </ion-label>
+
+    <ion-chip color="primary">
+      {{ stats.getDoneTaskCount() }}
+    </ion-chip>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Nombre de tâches en retard
+    </ion-label>
+
+    <ion-chip color="danger">
+      {{ stats.getOverdueTaskCount() }}
+    </ion-chip>
+  </ion-item>
 </ion-content>

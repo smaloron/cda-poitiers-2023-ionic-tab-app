@@ -11,7 +11,7 @@
       <ion-label>
         <h3>{{ task.taskName }}</h3>
         <p>Créée le {{ task.createdAt | date: 'd/MM/yyyy' }}</p>
-        <p *ngIf="task.dueDate">Echue le {{ task.dueDate | date: 'dd/mm/yy' }}</p>
+        <p *ngIf="task.dueDate">Echue le {{ task.dueDate | date: 'dd/MM/yyyy' }}</p>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button color="danger" (click)="todoService.deleteTask(pos)">
