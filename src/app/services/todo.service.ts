@@ -44,6 +44,10 @@ export class TodoService {
     this.taskList = JSON.parse(data) || [];
   }
 
+  persist() {
+    this.store.set('taskList', JSON.stringify(this.taskList));
+  }
+
   addTask(data: any) {
     const newTask: TodoInterface = {
       done: false,
@@ -54,6 +58,7 @@ export class TodoService {
     }
 
     this.taskList.push(newTask);
+    this.persist();
   }
 
   updateTask(data: any) {
@@ -63,6 +68,8 @@ export class TodoService {
       task.dueDate = data.dueDate;
 
       this.editedTaskIndex = null;
+
+      this.persist();
     }
   }
 
@@ -72,6 +79,7 @@ export class TodoService {
 
   deleteTask(index: number) {
     this.taskList.splice(index, 1);
+    this.persist();
   }
 
   getTask() {
