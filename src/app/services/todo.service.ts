@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { SettingsService } from './settings.service';
 
 export interface TodoInterface {
   createdAt: Date;
@@ -34,18 +35,21 @@ export class TodoService {
   editedTaskIndex: number | null = null;
   private store: Storage
 
-  constructor() {
+  constructor(private settingsSrv: SettingsService) {
     this.store = new Storage();
     this.store.create();
   }
 
   async loadData() {
-    const data = await this.store.get('taskList');
+    const data = await this.store.get(this.settingsSrv.settings.storageKey);
     this.taskList = JSON.parse(data) || [];
   }
 
   persist() {
-    this.store.set('taskList', JSON.stringify(this.taskList));
+    this.store.set(
+      this.settingsSrv.settings.storageKey,
+      JSON.stringify(this.taskList)
+    );
   }
 
   addTask(data: any) {

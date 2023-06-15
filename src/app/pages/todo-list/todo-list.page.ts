@@ -24,6 +24,11 @@ export class TodoListPage implements OnInit {
     this.todoService.loadData();
   }
 
+  ionViewDidEnter() {
+    console.log(this.settingsSrv.settings);
+    this.todoService.loadData();
+  }
+
   getTaskColor(task: TodoInterface) {
     if (task.done)
       return this.settingsSrv.settings.colors.doneTask;

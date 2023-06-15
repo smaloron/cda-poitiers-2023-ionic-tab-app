@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { TodoService } from './todo.service';
 
 const STORAGE_KEY = 'todoSettings';
 
@@ -11,21 +12,25 @@ export class SettingsService {
   defaultSettings = {
     colors: {
       pendingTask: 'secondary',
-      doneTask: 'medium'
-    }
+      doneTask: 'medium',
+    },
+    storageKey: 'taskList'
   }
 
   settings = {
     colors: {
       pendingTask: 'secondary',
-      doneTask: 'medium'
-    }
+      doneTask: 'medium',
+    },
+    storageKey: 'taskList'
   };
 
   colorNamesList = [
     'primary', 'secondary', 'danger', 'warning', 'light', 'medium', 'dark',
     'tertiary', 'success'
   ];
+
+  storageKeyList: string[] = [];
 
   private store: Storage;
 
@@ -35,6 +40,8 @@ export class SettingsService {
     this.settings = this.defaultSettings;
 
     this.loadSettings();
+
+    //this.setStorageKeyList();
   }
 
   async loadSettings() {
@@ -44,5 +51,11 @@ export class SettingsService {
 
   persist() {
     this.store.set(STORAGE_KEY, JSON.stringify(this.settings));
+  }
+
+  async setStorageKeyList() {
+    let list: string[] = await this.store.keys() || [];
+    list = list.filter((item) => item !== STORAGE_KEY);
+    this.storageKeyList = list;
   }
 }

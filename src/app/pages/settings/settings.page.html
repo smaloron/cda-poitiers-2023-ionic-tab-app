@@ -24,5 +24,21 @@
         </ion-select-option>
       </ion-select>
     </ion-item>
+
+    <!--
+    <ion-item>
+      <ion-label position="stacked">Choix de la collection</ion-label>
+      <ion-select [(ngModel)]="settingsSrv.settings.storageKey">
+        <ion-select-option *ngFor="let item of settingsSrv.storageKeyList" [value]="item">
+          {{ item }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    -->
+
+    <ion-item>
+      <ion-label position="stacked">Nouvelle collection de tâches</ion-label>
+      <ion-input [(ngModel)]="settingsSrv.settings.storageKey" (ionChange)="settingsSrv.persist()"></ion-input>
+    </ion-item>
   </ion-list>
 </ion-content>
