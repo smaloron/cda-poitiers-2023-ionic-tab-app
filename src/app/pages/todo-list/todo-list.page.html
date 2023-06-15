@@ -7,6 +7,7 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-list>
     <ion-item *ngFor="let task of todoService.taskList; let pos = index" [color]="getTaskColor(task)">
+      <ion-checkbox slot="start" [(ngModel)]="task.done" (ionChange)="todoService.persist()"></ion-checkbox>
       <ion-label>
         <h3>{{ task.taskName }}</h3>
         <p>Créée le {{ task.createdAt | date: 'd/MM/yyyy' }}</p>
