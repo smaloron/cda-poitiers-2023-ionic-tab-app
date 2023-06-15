@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 export interface TodoInterface {
   createdAt: Date;
@@ -31,8 +32,17 @@ export class TodoService {
   ];
 
   editedTaskIndex: number | null = null;
+  private store: Storage
 
-  constructor() { }
+  constructor() {
+    this.store = new Storage();
+    this.store.create();
+  }
+
+  async loadData() {
+    const data = await this.store.get('taskList');
+    this.taskList = JSON.parse(data) || [];
+  }
 
   addTask(data: any) {
     const newTask: TodoInterface = {

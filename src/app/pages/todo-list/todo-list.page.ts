@@ -17,6 +17,7 @@ export class TodoListPage implements OnInit {
   }
 
   ngOnInit() {
+    this.todoService.loadData();
   }
 
   getTaskColor(task: TodoInterface) {
